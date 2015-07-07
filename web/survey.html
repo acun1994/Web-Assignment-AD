@@ -19,7 +19,7 @@ and open the template in the editor.
             <h4 class ="text-center text-muted"> Please answer the following questions so our radio station can better serve you, our
 listeners</h4>
 
-            <form name="surveyForm" action="./PreviewSurvey">
+            <form name="surveyForm" action="./previewSurvey">
                 <table class="table-responsive" align="center">
                     <thead>
                         <th width='100px'></th>
@@ -105,10 +105,11 @@ listeners</h4>
                 <label>Subscribe to Newsletter? :&nbsp;</label><input type="checkbox" name="subscribe"> Yes, please<br>
                 <input class="btn btn-primary" type="submit">
             </form>
-        <script type="text/javascript">
+            <script type="text/javascript">
+            
             var frmvalidator  = new Validator("surveyForm");
             
-            frmValidator.EnableMsgsTogether();
+            frmvalidator.EnableMsgsTogether();
             
             frmvalidator.addValidation("name", "req", "Please enter your name.");
             frmvalidator.addValidation("name", "alpha_s", "Alphabets only please (Name).");
