@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Asg2-1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css"/>
+        <script src="resources/js/gen_validatorv4.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="container text-center">
+            <h1 class="text-center"> WARNA RADIO </h1>
+            <h3 class ="text-center"> Listener Survey </h3>
+            <h4 class ="text-center text-muted"> Please answer the following questions so our radio station can better serve you, our
+listeners</h4>
+
+            <form name="surveyForm" action="./PreviewSurvey">
+                <table class="table-responsive" align="center">
+                    <thead>
+                        <th width='100px'></th>
+                        <th width='100px'></th>
+                        <th width='100px'></th>
+                        <th width='100px'></th>
+                        <th width='100px'></th>
+                        <th width='100px'></th>
+                    </thead>
+                    <tr>
+                        <td class="text-right"><label>Name* :</label></td>
+                        <td class="text-left" colspan="2"><input type="text" required name="name" class="form-control"></td>
+
+                        <td class="text-right"><label>Email* :</label></td>
+                        <td class="text-left" colspan="2"><input type="email" required name="email" class="form-control"></td>
+                    </tr><tr>
+                        <td class="text-right"><label>Contact No :</label></td>
+                        <td class="text-left" colspan="2"><input type="text" name="contact" class="form-control"></td>
+                        
+                        <td class="text-right" rowspan='2'><label>Preferred <br> Listening Day :</label></td>
+                        <td class="text-left" rowspan = '2'>
+                            <input type="radio" name="musicDay" value="Sun"> Sunday<br>
+                            <input type="radio" name="musicDay" value="Mon"> Monday<br>
+                            <input type="radio" name="musicDay" value="Tue"> Tuesday<br>
+                            <input type="radio" name="musicDay" value="Wed"> Wednesday<br>
+                        </td>
+                        <td class="text-left" rowspan='2'>
+                            <input type="radio" name="musicDay" value="Thu"> Thursday<br>
+                            <input type="radio" name="musicDay" value="Fri"> Friday<br>
+                            <input type="radio" name="musicDay" value="Sat"> Saturday<br>
+                            <br>
+                        </td>
+                    </tr><tr>
+                        <td class="text-right"><label>Musical <br> Preferences :</label></td>
+                        <td class="text-left">
+                            <input type="checkbox" name="musicPref" value="Easy Listening"> Easy Listening<br>
+                            <input type="checkbox" name="musicPref" value="Rock 'n' Roll"> Rock 'n' Roll <br>
+                            <input type="checkbox" name="musicPref" value="Jazz"> Jazz <br>
+                        </td>
+                        
+                        <td class="text-left">
+                            <input type="checkbox" name="musicPref" value="Classical"> Classical <br>
+                            <input type="checkbox" name="musicPref" value="Folk"> Folk <br>
+                            <input type="checkbox" name="musicPref" value="Metal"> Metal <br>
+                        </td>
+                    </tr><tr>
+                        <td class="text-right" ><label>Favourite Musical Decade :</label></td>
+                        <td class="text-left" colspan='2'>
+                            <select name="musicDec" class="form-control">
+                                <option value="na" selected disabled>[Choose One]</option>
+                                <option value="50's">50's</option>
+                                <option value="60's">60's</option>
+                                <option value="70's">70's</option>
+                                <option value="80's">80's</option>
+                                <option value="90's">90's</option>
+                                <option value="Millenial">Millenial</option>
+                                <option value="Recent">Recent</option>
+                            </select>
+                        </td>
+                        <td class="text-right" ><label>Listening Frequency :</label></td>
+                        <td class="text-left" colspan='2'>
+                            <select name="musicFreq" class="form-control">
+                                <option value="na" selected disabled>[Choose One]</option>
+                                <option value="Daily">Daily</option>
+                                <option value="Almost Daily">4-5 Days a week</option>
+                                <option value="Bi-Weekly">2-3 Days a week</option>
+                                <option value="Weekly">Once a week</option>
+                            </select>
+                        </td>
+                    </tr><tr>
+                        <td class="text-right"><label>Prefer to Listen :</label></td>
+                        <td class="text-left"><input type="checkbox" name="musicSpot" value="Home"> At Home</td>
+                        <td class="text-left"><input type="checkbox" name="musicSpot" value="Car"> In the Car</td>
+                        <td class="text-left"><input type="checkbox" name="musicSpot" value="Work"> At Work</td>
+                        <td></td><td></td>
+                    </tr><tr>
+                        <td class="text-right"><label>Comments :</label></td>
+                        <td class="text-left" colspan="5" >
+                            <textarea class="form-control" rows="5" name="comment" placeholder="Enter your comments here. We'd love to know what you think."></textarea><br>
+                        </td>
+                    </tr>
+                </table>
+                <label>Subscribe to Newsletter? :&nbsp;</label><input type="checkbox" name="subscribe"> Yes, please<br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        <script type="text/javascript">
+            var frmvalidator  = new Validator("surveyForm");
+            
+            frmValidator.EnableMsgsTogether();
+            
+            frmvalidator.addValidation("name", "req", "Please enter your name.");
+            frmvalidator.addValidation("name", "alpha_s", "Alphabets only please (Name).");
+            frmvalidator.addValidation("name", "minlen=3", "Name is too short");
+            
+            frmvalidator.addValidation("email", "req", "Please enter your e-mail address.");
+            frmvalidator.addValidation("email", "email", "Please enter a valid email address.");
+            
+            frmvalidator.addValidation("contact", "numeric", "Please enter numbers only (Contact).");
+            
+            frmvalidator.addValidation("musicDec", "dontselect=na", "Please choose a decade.");
+            
+            frmvalidator.addValidation("musicDay", "selone_radio", "Please select a preferred music listening day.");
+            
+            frmvalidator.addValidation("musicFreq", "dontselect=na", "Please state listening frequency.");
+        </script>
+        </div>
+    </body>
+</html>
