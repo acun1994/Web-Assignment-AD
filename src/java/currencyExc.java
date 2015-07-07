@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-@WebServlet(urlPatterns = {"/gradeCalc"})
-public class gradeCalc extends HttpServlet {
+@WebServlet(urlPatterns = {"/currencyExc"})
+public class currencyExc extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,59 +32,28 @@ public class gradeCalc extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            double amt = Double.parseDouble(request.getParameter("amt"));
+            double conv_amt;
+            String conv = "VND";
+            if (request.getParameter("conv") != null)
+                conv = request.getParameter("conv");
             
-            final double w_final = 30.0/100, w_mid = 30.0/100, w_proj = 40.0/100;
-            
-            double final_m = Double.parseDouble(request.getParameter("final"));
-            double mid = Double.parseDouble(request.getParameter("midterm"));
-            double proj = Double.parseDouble(request.getParameter("project"));
-            
-            double marks = final_m*w_final + mid * w_mid + proj*w_proj;
-            
-            int point;
-            char grade;
-            if (marks<60){
-                point = 0;
-                grade = 'F';
+            switch (conv){
+                case "USD": conv_amt = amt /16452; break;
+                case "EUR": conv_amt = amt /25170.38; break;
+                case "JPY": conv_amt = amt /151.23; break;
+                default : conv_amt = amt;
             }
-            else if (marks<70){
-                point = 1;
-                grade = 'D';
-            }
-            else if (marks<80){
-                point = 2;
-                grade = 'C';
-            }
-            else if (marks<90){
-                point = 3;
-                grade = 'B';
-            }
-            else{
-                point = 4;
-                grade = 'A';
-            }
-            
-            boolean isPoint = false;
-            boolean isGrade = false;
-            
-            if (request.getParameter("isPoint")!=null) isPoint = true;
-            if (request.getParameter("isGrade")!=null) isGrade = true;
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Grade Calculator</title>");            
+            out.println("<title>Servlet Currency Exchanger</title>");            
             out.println("</head>");
             out.println("<body>");
             
-            out.printf(" MidTerm : %.2f/%.2f<br>", mid*w_mid, w_mid*100);
-            out.printf(" Final : %.2f/%.2f<br>", final_m*w_final, w_final*100);
-            out.printf(" Project : %.2f/%.2f<br>", proj*w_proj, w_proj*100);
-            out.printf(" Total Marks : %.2f %s", marks, "% <br>");
-            if (isPoint)  out.println(" Point : " + point + "<br>");
-            if (isGrade)  out.println(" Grade : " + grade + "<br>");
-            if (marks<60)  out.println(" You have failed. ");
-            else out.println(" You have passed. ");
+            out.printf("<div class='text-center' align='center'> %.2f VND = %.2f %s</div>", amt, conv_amt, conv);
             
             out.println("</body>");
             out.println("</html>");
