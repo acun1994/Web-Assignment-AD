@@ -10,8 +10,13 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css"/>
+        <script src="resources/js/jquery.js" type="text/javascript"></script>
+        <script src="resources/js/bootstrap.js" type="text/javascript"></script>
     </head>
-    <div class ="container">
+    <body>
+        <div class="container text-center">
+            <div id="navbar"></div>
+            <script> $( "#navbar" ).load( "navbar.html" ); </script>
         <h1 class ="text-center"> Tutorial Fee Calculator </h1>
         <div class="text-center">
             <form name="tuitionform" action="./tuition">
