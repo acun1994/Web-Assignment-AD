@@ -67,11 +67,11 @@
                     else if (bmi<25) out.println("You are of normal weight");
                     else if (bmi<30) out.println("You are overweight");
                     else out.println("You are obese");
-            }%>
+            %>
                 </td>
             </tr>
         </table>
-        
+        <% } %>
         </div>
     </body>
 </html>
